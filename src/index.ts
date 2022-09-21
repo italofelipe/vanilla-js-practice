@@ -2,6 +2,7 @@
 (function () {
   console.log("Arquivo TS inicializado");
   const body = document.querySelector("body");
+  const div = document.createElement("div")
   const wrapper = document.createElement("section");
   wrapper.style.width = "200px";
   wrapper.style.height = "200px";
@@ -11,12 +12,14 @@
  const appender = (child: HTMLElement, father: HTMLElement) =>
   father.append(child);
 
-
- const stylesApplier = (element: HTMLElement, property: CSSStyleDeclaration, value: string) => {
-  return element.style[property as CSSStyleDeclaration] = value
+ const stylesApplier = (element: HTMLElement,
+  property: keyof CSSStyleDeclaration, 
+ value: string) => {
+  return element.style[property as any] = value
+  
 }
 
     appender(title, wrapper)
     appender(wrapper, body!)
-    stylesApplier(title, "color", "pink")
+    stylesApplier(title, "color", "yellow")
 })();
